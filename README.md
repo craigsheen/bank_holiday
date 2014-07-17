@@ -6,7 +6,7 @@ Retrieve UK bank holidays in a nice format and includes handy Rails helpers for 
 
 Add this line to your application's Gemfile:
 
-    gem 'bank_holiday'
+    gem "bank_holiday", :git => "https://github.com/craigsheen/bank_holiday.git"
 
 And then execute:
 
