@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   
   s.add_dependency 'dish'
-  s.require_paths = ["lib"]
+  s.require_paths = ["lib", "lib/bank_holiday"]
   s.files         = `git ls-files`.split($/)
 end
