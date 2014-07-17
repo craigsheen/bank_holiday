@@ -1,6 +1,10 @@
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'bank_holiday/version'
+
 Gem::Specification.new do |s|
   s.name        = 'bank_holiday'
-  s.version     = '0.0.1'
+  s.version     = BankHoliday::VERSION
   s.date        = '2014-07-17'
   s.summary     = "Finding bank holidays including helpers for dates."
   s.description = "Finding bank holidays including helpers for dates."
@@ -11,4 +15,6 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   
   s.add_dependency 'dish'
+  s.require_paths = ["lib"]
+  s.files         = `git ls-files`.split($/)
 end

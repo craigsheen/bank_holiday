@@ -1,5 +1,4 @@
 require 'bank_holiday'
-
 class Date
     
   def bank_holiday?
