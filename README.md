@@ -54,6 +54,26 @@ This uses the Dish gem to allow easy access to the objects;
     bank_holiday.first.bunting
     => true
     
+There is also some other helpful methods;
+
+    after_date = BankHoliday.after(Date.today)
+    => [#<Dish::Plate:0x007f831e886c80 @_original_hash={"title"=>"Summer bank holiday", "date"=>"2014-08-25", "notes"=>"", "bunting"=>true}>, #<Dish::Plate:0x007f831e886aa0 @_original_hash={"title"=>"Christmas Day", "date"=>"2014-12-25", "notes"=>"", "bunting"=>true}>, #<Dish::Plate:0x007f831e8868c0 @_original_hash={"title"=>"Boxing Day", "date"=>"2014-12-26", "notes"=>"", "bunting"=>true}>...]
+    
+    before_date = BankHoliday.before(1.month.ago)
+    => [#<Dish::Plate:0x007f831e855630 @_original_hash={"title"=>"New Year’s Day", "date"=>"2012-01-02", "notes"=>"Substitute day", "bunting"=>true}>, #<Dish::Plate:0x007f831e855450 @_original_hash={"title"=>"Good Friday", "date"=>"2012-04-06", "notes"=>"", "bunting"=>false}>, #<Dish::Plate:0x007f831e855270 @_original_hash={"title"=>"Easter Monday", "date"=>"2012-04-09", "notes"=>"", "bunting"=>true}>...]
+    
+    next = BankHoliday.next
+    => #<Dish::Plate:0x007f831e886c80 @_original_hash={"title"=>"Summer bank holiday", "date"=>"2014-08-25", "notes"=>"", "bunting"=>true}>
+    
+    last = BankHoliday.last
+    => #<Dish::Plate:0x007f831e886e60 @_original_hash={"title"=>"Spring bank holiday", "date"=>"2014-05-26", "notes"=>"", "bunting"=>true}>
+    
+    future = BankHoliday.future
+    => [#<Dish::Plate:0x007f831e886c80 @_original_hash={"title"=>"Summer bank holiday", "date"=>"2014-08-25", "notes"=>"", "bunting"=>true}>, #<Dish::Plate:0x007f831e886aa0 @_original_hash={"title"=>"Christmas Day", "date"=>"2014-12-25", "notes"=>"", "bunting"=>true}>, #<Dish::Plate:0x007f831e8868c0 @_original_hash={"title"=>"Boxing Day", "date"=>"2014-12-26", "notes"=>"", "bunting"=>true}>...]
+    
+    past = BankHoliday.past
+    => [#<Dish::Plate:0x007f831e855630 @_original_hash={"title"=>"New Year’s Day", "date"=>"2012-01-02", "notes"=>"Substitute day", "bunting"=>true}>, #<Dish::Plate:0x007f831e855450 @_original_hash={"title"=>"Good Friday", "date"=>"2012-04-06", "notes"=>"", "bunting"=>false}>, #<Dish::Plate:0x007f831e855270 @_original_hash={"title"=>"Easter Monday", "date"=>"2012-04-09", "notes"=>"", "bunting"=>true}>...]
+    
 ## Future
 
 I would like to add other options/features to this and would welcome any improvements or changes.
