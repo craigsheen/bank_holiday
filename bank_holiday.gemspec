@@ -17,4 +17,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'dish'
   s.require_paths = ["lib", "lib/bank_holiday"]
   s.files         = `git ls-files`.split($/)
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'webmock'
 end
