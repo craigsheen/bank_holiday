@@ -13,33 +13,35 @@ module BankHoliday
     bank_holidays = response.body
     return Dish(JSON.parse(bank_holidays)["england-and-wales"]["events"])
   end
-  
+
   def self.after(date)
     @bank_holidays||=all
     @bank_holidays.reject{ |h| Date.parse(h.date) <= date }
   end
-  
+
   def self.before(date)
     @bank_holidays||=all
     @bank_holidays.reject{ |h| Date.parse(h.date) >= date }
   end
-  
+
   def self.next
     future.first
   end
-  
+
   def self.last
     past.last
   end
-  
+
   def self.future
     @bank_holidays||=all
-    @bank_holidays.reject{ |h| Date.parse(h.date) <= Date.today }
+    today = Date.today
+    @bank_holidays.reject{ |h| Date.parse(h.date) <= today }
   end
-  
+
   def self.past
     @bank_holidays||=all
-    @bank_holidays.reject{ |h| Date.parse(h.date) >= Date.today }
+    today = Date.today
+    @bank_holidays.reject{ |h| Date.parse(h.date) >= today }
   end
 
   def self.bank_holiday?(date)
