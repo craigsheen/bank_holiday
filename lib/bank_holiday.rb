@@ -5,5 +5,4 @@ require 'bank_holiday/date_extension'
 require 'bank_holiday/bank_holiday'
 
 module BankHoliday
-
 end
