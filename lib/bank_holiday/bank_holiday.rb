@@ -1,7 +1,6 @@
 require 'dish/ext'
 
 module BankHoliday
-
   URL = "https://www.gov.uk/bank-holidays.json"
 
   def self.all
@@ -11,17 +10,17 @@ module BankHoliday
     request = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
     bank_holidays = response.body
-    return Dish(JSON.parse(bank_holidays)["england-and-wales"]["events"])
+    Dish(JSON.parse(bank_holidays)['england-and-wales']['events'])
   end
 
   def self.after(date)
-    @bank_holidays||=all
-    @bank_holidays.reject{ |h| Date.parse(h.date) <= date }
+    @bank_holidays ||= all
+    @bank_holidays.reject { |holiday| Date.parse(holiday.date) <= date }
   end
 
   def self.before(date)
-    @bank_holidays||=all
-    @bank_holidays.reject{ |h| Date.parse(h.date) >= date }
+    @bank_holidays ||= all
+    @bank_holidays.reject { |holiday| Date.parse(holiday.date) >= date }
   end
 
   def self.next
@@ -33,24 +32,20 @@ module BankHoliday
   end
 
   def self.future
-    @bank_holidays||=all
+    @bank_holidays ||= all
     today = Date.today
-    @bank_holidays.reject{ |h| Date.parse(h.date) <= today }
+    @bank_holidays.reject { |holiday| Date.parse(holiday.date) <= today }
   end
 
   def self.past
-    @bank_holidays||=all
+    @bank_holidays ||= all
     today = Date.today
-    @bank_holidays.reject{ |h| Date.parse(h.date) >= today }
+    @bank_holidays.reject { |holiday| Date.parse(holiday.date) >= today }
   end
 
   def self.bank_holiday?(date)
-    @bank_holidays||=all
-    if @bank_holidays.collect {|holiday| holiday.date}.include?(date.strftime("%Y-%m-%d"))
-      return true
-    else
-      return false
-    end
+    @bank_holidays ||= all
+    return true if @bank_holidays.collect(&:date).include?(date.strftime('%Y-%m-%d'))
+    false
   end
-
 end
